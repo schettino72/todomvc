@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>TodoMVC - comparison</title>
+
+    <style>
+      table.stats {
+         border-collapse:collapse;
+         border:1px solid black;
+         }
+      table.stats th, table.stats td { border:1px solid black; }
+
+      .flotr-grid-label-x {
+        margin-top: 7px;
+        transform: rotate(15deg);
+      }
+    </style>
+
+  </head>
+  <body>
+    <div id="stats"></div>
+<script id="stats-template" type="text/xhandlebars-template">
+  <table class="stats">
+    <tr>
+      <th></th>
+      <th># js files</th>
+      <th>js LOC</th>
+      <th>html LOC</th>
+      <th>lib size (KBytes)</th>
+      <th>compiled</th>
+      <th>assets</th>
+    </tr>
+    {{#each stats}}
+    <tr>
+      <td>{{name}}</td>
+      <td>{{files.length}}</td>
+      <td>{{total.code}}</td>
+      <td>{{html.code}}</td>
+      <td>{{lib}}</td>
+      <td>{{compiled}}</td>
+      <td>{{assets}}</td>
+    </tr>
+  </div>
+  {{/each}}
+</script>
+
+    <p>Notes:</p>
+    <ul>
+      <li>LOC excludes blank lines and comments</li>
+      <li>vanillajs and jquery have incomplete implementation</li>
+      <li>lib size does not include "assets"</li>
+      <li>for projects that compile to JS, the line count is of JS generated code</li>
+    </ul>
+
+    <div id="graph" style="width:800px;height:400px;"></graph>
+
+    <script src="assets/jquery.min.js"></script>
+    <script src="assets/handlebars.min.js"></script>
+    <script src="assets/flotr2.min.js"></script>
+    <script src="stats-data.js"></script>
+    <script src="compare.js"></script>
+  </body>
+</html>
