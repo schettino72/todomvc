@@ -49,7 +49,6 @@ We also have a number of in-progress applications in Labs:
 - [SocketStream](http://www.socketstream.org) + [jQuery](http://jquery.com)
 - [Ext.js](http://www.sencha.com/products/extjs)
 - [Sammy.js](http://sammyjs.org)
-- [JavaScriptMVC](http://javascriptmvc.com)
 - [dermis](https://github.com/wearefractal/dermis)
 - [Stapes.js](http://hay.github.com/stapes)
 - [Epitome](http://dimitarchristoff.github.com/Epitome)
@@ -67,6 +66,7 @@ We also have a number of in-progress applications in Labs:
 - [AngularJS](http://angularjs.org) (optimized)
 - [Backbone.xmpp](https://github.com/ggozad/Backbone.xmpp)
 - [Dart](http://dartlang.org)
+- [Chaplin](http://chaplinjs.org) + [Brunch](http://brunch.io)
 
 
 ## Live demos
