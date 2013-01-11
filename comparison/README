@@ -30,7 +30,6 @@ HTML report can be viewed on `compare.html'
 TODO
 --------
 
- * config in YAML
  * include all implementations
  * include complexity measurement
 

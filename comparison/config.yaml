@@ -1,0 +1,58 @@
+
+# TODO gwt/src  java=425, XML=46
+# name: gwt, basepath: architecture-examples
+
+projects:
+
+  - name: vanillajs
+    basepath: vanilla-examples
+
+  - name: jquery
+    basepath: architecture-examples
+    assets: [jquery, handlebars]
+
+  - name: agilityjs
+    basepath: architecture-examples
+    assets: [jquery]
+
+  - name: angularjs
+    basepath: architecture-examples
+    lib: libs
+
+  - name: angularjs-perf
+    basepath: architecture-examples
+    lib: libs
+
+  - name: backbone
+    basepath: architecture-examples
+    assets: [jquery, lodash]
+
+  - name: closure
+    basepath: architecture-examples
+    lib: compiled.js
+
+  - name: dojo
+    basepath: architecture-examples
+
+  - name: emberjs
+    basepath: architecture-examples
+    lib: libs
+    assets: [jquery, handlebars]
+
+  - name: knockback
+    basepath: architecture-examples
+    compiled: coffee
+    assets: [jquery]
+
+  - name: knockoutjs
+    basepath: architecture-examples
+    assets: [director]
+
+  - name: spine
+    basepath: architecture-examples
+    compiled: coffee
+    assets: [jquery, handlebars]
+
+  - name: yui
+    basepath: architecture-examples
+

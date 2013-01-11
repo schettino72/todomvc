@@ -2,6 +2,7 @@
 
 import os, os.path, fnmatch, subprocess
 import json
+import yaml
 
 from doit.tools import result_dep
 
@@ -11,23 +12,6 @@ DOIT_CONFIG = {'verbosity': 2,
 
 
 CLOC = "cloc --quiet --by-file --csv "
-PROJECTS = [
-    {'name': 'vanillajs', 'basepath': 'vanilla-examples'},
-    {'name': 'jquery', 'assets':['jquery', 'handlebars']},
-    {'name': 'agilityjs', 'assets':['jquery']},
-    {'name': 'angularjs', 'lib':'libs'},
-    {'name': 'angularjs-perf', 'lib':'libs'},
-    {'name': 'backbone', 'assets':['jquery', 'lodash']},
-    {'name': 'closure', 'lib':'compiled.js'},
-    {'name': 'dojo' },
-    {'name': 'emberjs', 'lib':'libs', 'assets':['jquery', 'handlebars']},
-    # TODO gwt/src  java=425, XML=46
-    # {'name': 'gwt', 'basepath': 'architecture-examples'},
-    {'name': 'knockback', 'compiled':'coffee', 'assets':['jquery']},
-    {'name': 'knockoutjs', 'assets':['director']},
-    {'name': 'spine', 'compiled':'coffee', 'assets':['jquery', 'handlebars']},
-    {'name': 'yui', },
-    ]
 
 
 
@@ -74,8 +58,7 @@ def folder_bytes(path):
 
 class Project(object):
     """compute stats for a project"""
-    def __init__(self, name, basepath='architecture-examples', lib='lib',
-                 compiled='', assets=None):
+    def __init__(self, name, basepath, lib='lib', compiled='', assets=None):
         self.name = name
         self.path = os.path.join('../', basepath, self.name)
         # path containing libs (wont count LOC)
@@ -175,8 +158,10 @@ class Project(object):
 
 
 
-def task_all():
-    for proj_opt in PROJECTS:
+def task_stats():
+    stream = open('config.yaml')
+    config = yaml.load(stream)
+    for proj_opt in config['projects']:
         proj = Project(**proj_opt)
         yield proj.gen_cloc_js()
         yield proj.gen_lib_size()
