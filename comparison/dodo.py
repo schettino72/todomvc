@@ -1,16 +1,3 @@
-# collect and present stats of TodoMVC implementations
-# this should be run with `doit` http://python-doit.sourceforge.net
-# LOC count by http://cloc.sourceforge.net
-
-# TODO
-# =========
-#
-# * YUI lib not included
-# * ember.js lib not minimized
-# * closure use template with extension .soy (not counted)
-# * ignoring gwt (too strange)
-# * cloc does not support coffeescript. counting compiled JS
-#
 
 
 import os, os.path, fnmatch, subprocess
@@ -90,7 +77,7 @@ class Project(object):
     def __init__(self, name, basepath='architecture-examples', lib='lib',
                  compiled='', assets=None):
         self.name = name
-        self.path = os.path.join(basepath, self.name)
+        self.path = os.path.join('../', basepath, self.name)
         # path containing libs (wont count LOC)
         self.lib_path = lib
         self.compiled = compiled
@@ -103,7 +90,7 @@ class Project(object):
         """
         total = {'code':0, 'comment':0, 'blank':0}
         files = []
-        for res in cloc_files:
+        for res in cloc_files.values():
             file_info = res.copy()
             # remove project path from filename
             file_info['filename'] = res['filename'][len(self.path):]
@@ -203,7 +190,7 @@ def task_report():
         with open(target, 'w') as fp:
             fp.write('// this file is auto-generated, check dodo.py\n')
             fp.write('var STATS_DATA = ')
-            fp.write(json.dumps(results, indent=2))
+            fp.write(json.dumps(results.values(), indent=2))
             fp.write(';')
     return {
         'actions': [export],
@@ -212,5 +199,4 @@ def task_report():
         'uptodate': [result_dep('result')]
         }
 
-# graph all results
 

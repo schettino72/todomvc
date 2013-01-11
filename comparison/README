@@ -1,0 +1,44 @@
+TodoMVC comparison
+====================
+
+Collect and present stats of TodoMVC implementations.
+This should be run with [doit](http://pydoit.org)
+
+LOC count by http://cloc.sourceforge.net
+
+install
+---------
+
+  $ apt-get install cloc
+  $ pip install -r requirements.txt
+
+
+generate stats
+----------------
+
+  $ doit
+
+json output at `stats-data.js`
+
+
+view
+--------
+
+HTML report can be viewed on `compare.html'
+
+
+TODO
+--------
+
+ * config in YAML
+ * include all implementations
+ * include complexity measurement
+
+ISSUES
+--------
+
+ * YUI lib not included
+ * ember.js lib not minimized
+ * closure use template with extension .soy (not counted)
+ * ignoring gwt (too strange)
+ * cloc does not support coffeescript. counting compiled JS
