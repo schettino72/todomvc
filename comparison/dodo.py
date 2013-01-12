@@ -58,13 +58,17 @@ def folder_bytes(path):
 
 class Project(object):
     """compute stats for a project"""
-    def __init__(self, name, basepath, lib='lib', compiled='', assets=None):
+    POSITION = 0 # define order in report
+
+    def __init__(self, name, basepath, lib='lib', **extra):
         self.name = name
         self.path = os.path.join('../', basepath, self.name)
+        self.position = Project.POSITION
+        Project.POSITION += 1
         # path containing libs (wont count LOC)
         self.lib_path = lib
-        self.compiled = compiled
-        self.assets = assets or []
+        # extra info used on report (but no generated stats from it)
+        self.extra = extra
 
 
     def js_stats(self, cloc_files):
@@ -89,6 +93,7 @@ class Project(object):
         """count LOC in js files"""
         group_name = 'cloc-' + self.name
         js_path = os.path.join(self.path, 'js')
+        assert os.path.exists(js_path), "%s: missing js folder" % self.name
         lib_path = os.path.join(js_path, self.lib_path)
         # one task for each file
         for js_file in path_iter(js_path, "*.js"):
@@ -121,6 +126,7 @@ class Project(object):
     def gen_cloc_html(self):
         """count LOC of index.html"""
         index_html = os.path.join(self.path, 'index.html')
+        assert os.path.exists(index_html), "%s: missing index.html" % self.name
         yield {
             'basename': 'html_loc',
             'name': self.name,
@@ -131,10 +137,10 @@ class Project(object):
     def gen_result(self):
         def merge_results(js_loc, lib_size, html_loc):
             """merge all results in a single dict"""
-            results = {
-                'name': self.name,
-                'compiled': self.compiled,
-                'assets': self.assets}
+            results = {'name': self.name,
+                       'position': self.position,
+                       }
+            results.update(self.extra)
             results['total'] = js_loc['total']
             results['files'] = js_loc['files']
             results.update(lib_size)
@@ -156,12 +162,12 @@ class Project(object):
             }
 
 
-
+with open('config.yaml') as stream:
+    config = yaml.load(stream)
+PROJECTS = config['projects']
 
 def task_stats():
-    stream = open('config.yaml')
-    config = yaml.load(stream)
-    for proj_opt in config['projects']:
+    for proj_opt in PROJECTS:
         proj = Project(**proj_opt)
         yield proj.gen_cloc_js()
         yield proj.gen_lib_size()
@@ -175,7 +181,8 @@ def task_report():
         with open(target, 'w') as fp:
             fp.write('// this file is auto-generated, check dodo.py\n')
             fp.write('var STATS_DATA = ')
-            fp.write(json.dumps(results.values(), indent=2))
+            values = sorted(results.values(), key=lambda v: v['position'])
+            fp.write(json.dumps(values, indent=2))
             fp.write(';')
     return {
         'actions': [export],

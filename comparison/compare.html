@@ -24,6 +24,7 @@
   <table class="stats">
     <tr>
       <th></th>
+      <th>routing</th>
       <th># js files</th>
       <th>js LOC</th>
       <th>html LOC</th>
@@ -34,6 +35,7 @@
     {{#each stats}}
     <tr>
       <td>{{name}}</td>
+      <td>{{routing}}</td>
       <td>{{files.length}}</td>
       <td>{{total.code}}</td>
       <td>{{html.code}}</td>
@@ -51,6 +53,7 @@
       <li>vanillajs and jquery have incomplete implementation</li>
       <li>lib size does not include "assets"</li>
       <li>for projects that compile to JS, the line count is of JS generated code</li>
+      <li>only complete projects (with routing) are displayd in graph</li>
     </ul>
 
     <div id="graph" style="width:800px;height:400px;"></graph>

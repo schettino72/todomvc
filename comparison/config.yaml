@@ -1,7 +1,4 @@
 
-# TODO gwt/src  java=425, XML=46
-# name: gwt, basepath: architecture-examples
-
 projects:
 
   - name: vanillajs
@@ -14,45 +11,195 @@ projects:
   - name: agilityjs
     basepath: architecture-examples
     assets: [jquery]
+    routing: true
 
   - name: angularjs
     basepath: architecture-examples
     lib: libs
+    routing: true
 
   - name: angularjs-perf
     basepath: architecture-examples
     lib: libs
+    routing: true
 
   - name: backbone
     basepath: architecture-examples
     assets: [jquery, lodash]
+    routing: true
+
+  - name: canjs
+    basepath: architecture-examples
+    assets: ['???']
+    routing: true
 
   - name: closure
     basepath: architecture-examples
     lib: compiled.js
+    routing: true
+
+  #- name: dart
+  #  basepath: architecture-examples
+  #  assets: ['???']
+  #  routing: true
 
   - name: dojo
     basepath: architecture-examples
+    routing: true
 
   - name: emberjs
     basepath: architecture-examples
     lib: libs
     assets: [jquery, handlebars]
+    routing: true
+
+  # TODO gwt/src  java=425, XML=46
+  #- name: gwt
+  #  basepath: architecture-examples
 
   - name: knockback
     basepath: architecture-examples
     compiled: coffee
     assets: [jquery]
+    routing: true
 
   - name: knockoutjs
     basepath: architecture-examples
     assets: [director]
+    routing: true
 
   - name: spine
     basepath: architecture-examples
     compiled: coffee
     assets: [jquery, handlebars]
+    routing: true
 
   - name: yui
     basepath: architecture-examples
+    routing: true
+
+
+   ## labs
+
+  - name: backbone_marionette
+    basepath: labs/architecture-examples
+    assets: ['???']
+
+  - name: backbone.xmpp
+    basepath: labs/architecture-examples
+    assets: ['???']
+    routing: true
+
+  - name: batman
+    basepath: labs/architecture-examples
+    assets: ['???']
+    routing: true
+
+  # missing js folder
+  # - name: cujo
+  #   basepath: labs/architecture-examples
+  #   assets: ['???']
+
+  # missing index.html
+  # - name: derby
+  #   basepath: labs/architecture-examples
+  #   assets: ['???']
+
+  - name: dermis
+    basepath: labs/architecture-examples
+    assets: ['???']
+    routing: true
+
+  - name: dijon
+    basepath: labs/architecture-examples
+    assets: ['???']
+
+  # missing index.html
+  # - name: duel
+  #   basepath: labs/architecture-examples
+  #   assets: ['???']
+
+  - name: epitome
+    basepath: labs/architecture-examples
+    assets: ['???']
+    routing: true
+
+  - name: extjs
+    basepath: labs/architecture-examples
+    assets: ['???']
+
+  - name: knockoutjs_classBindingProvider
+    basepath: labs/architecture-examples
+    assets: ['???']
+
+  # missing index.html
+  # - name: maria
+  #   basepath: labs/architecture-examples
+  #   assets: ['???']
+
+  # missing index.html
+  # - name: meteor
+  #   basepath: labs/architecture-examples
+  #   assets: ['???']
+
+  # missing js folder
+  # - name: montage
+  #   basepath: labs/architecture-examples
+  #   assets: ['???']
+
+  - name: olives
+    basepath: labs/architecture-examples
+    assets: ['???']
+
+  - name: o_O
+    basepath: labs/architecture-examples
+    assets: ['???']
+
+  - name: plastronjs
+    basepath: labs/architecture-examples
+    assets: ['???']
+    routing: true
+
+  - name: puremvc
+    basepath: labs/architecture-examples
+    assets: ['???']
+    routing: true
+
+  # missing js folder
+  # - name: rappidjs
+  #   basepath: labs/architecture-examples
+  #   assets: ['???']
+  #   routing: true
+
+  - name: sammyjs
+    basepath: labs/architecture-examples
+    assets: ['???']
+
+  # missing index.html
+  # - name: socketstream
+  #   basepath: labs/architecture-examples
+  #   assets: ['???']
+
+  - name: somajs
+    basepath: labs/architecture-examples
+    assets: ['???']
+
+  - name: stapes
+    basepath: labs/architecture-examples
+    assets: ['???']
+    routing: true
+
+  - name: thorax
+    basepath: labs/architecture-examples
+    assets: ['???']
+    routing: true
+
+  - name: troopjs
+    basepath: labs/architecture-examples
+    assets: ['???']
+    routing: true
+
+  - name: typescript-backbone
+    basepath: labs/architecture-examples
+    assets: ['???']
 

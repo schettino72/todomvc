@@ -8,10 +8,17 @@ $(function(){
     (function bars_stacked(container) {
         var js = [], html = [], ticks = [], graph;
 
+        var tick = 0;
         $.each(STATS_DATA, function(i, v){
-            ticks.push([i, v.name]);
-            js.push([i, v.total.code]);
-            html.push([i, v.html.code]);
+            if (!v.routing){
+                // do not show incomplete apps in graph
+                // TODO: should check version also
+                return true;
+            }
+            ticks.push([tick, v.name]);
+            js.push([tick, v.total.code]);
+            html.push([tick, v.html.code]);
+            tick += 1;
         });
 
         graph = Flotr.draw(container,[
